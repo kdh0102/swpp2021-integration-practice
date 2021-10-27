@@ -6,22 +6,22 @@ python:
 
 jobs:
   include:
-    - language: node_js
-      python: "3.7.9"
-      node_js: 14
+    - python: "3.7.9"
       install:
-        - cd frontend
-        - cd ../backend
+        - cd backend
         - which python
         - python --version
         - pip install -r requirements.txt
-        - cd ..
       script:
-        - cd frontend
-        - ./node_modules/.bin/eslint src
-        - yarn test --coverage --watchAll=false
-        - cd ..
-        - cd backend
         - pylint **/*.py --load-plugins pylint_django
         - coverage run --source='.' manage.py test
         - coverage xml
+
+    - language: node_js
+      node_js: 14
+      install:
+        - cd frontend
+        - yarn install
+      script:
+        - ./node_modules/.bin/eslint src
+        - yarn test --coverage --watchAll=false
