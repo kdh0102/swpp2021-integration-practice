@@ -1,15 +1,13 @@
+# CI environment
+dist: bionic
+language: python
 python:
   - "3.7.9"
 
 jobs:
   include:
-    - language: node_js
+    - python: "3.7.9"
       node_js: 14
-      dist: bionic
-      services: sqlite3
-      cache:
-        - yarn: true
-        - pip: true
       install:
         - cd frontend
         - cd ../backend
