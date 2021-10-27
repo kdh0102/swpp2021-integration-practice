@@ -1,14 +1,13 @@
-# CI environment
+# CI Environment
 dist: bionic
 
+# Job Configurations
 jobs:
   include:
     - language: python
       python: "3.7.9"
       install:
         - cd backend
-        - which python
-        - python --version
         - pip install -r requirements.txt
       script:
         - pylint **/*.py --load-plugins pylint_django
