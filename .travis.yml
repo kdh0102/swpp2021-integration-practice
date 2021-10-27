@@ -2,18 +2,20 @@ jobs:
   include:
     - language: node_js
       node_js: 14
-      python:
-        - "3.7"
+      python: 3.7
       dist: xenial
       services: sqlite3
       cache:
         - yarn: true
         - pip: true
+      before_install:
+        - sudo apt-get update
+        - sudo apt-get install python3
       install:
         - cd frontend
         - yarn install
-        - cd ../backend
-        - pip install -r requirements.txt
+        - cd ..backend
+        - pip3 install -r requirements.txt
         - cd ..
       script:
         - cd frontend
