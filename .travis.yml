@@ -11,8 +11,7 @@ jobs:
       install:
         - cd frontend
         - yarn install
-        - cd ..
-        - cd backend
+        - cd ../backend
         - pip3 install -r requirements.txt
         - cd ..
       script:
