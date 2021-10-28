@@ -7,8 +7,10 @@ from json.decoder import JSONDecodeError
 
 from .models import Hero
 
+
 def index(request):
     return HttpResponse('Hello, world!\n')
+
 
 @ensure_csrf_cookie
 def hero_info(request, id):
@@ -32,6 +34,7 @@ def hero_info(request, id):
     else:
         return HttpResponseNotAllowed(['GET', 'PUT'])
 
+
 @ensure_csrf_cookie
 def hero_list(request):
     if request.method == "GET":
@@ -48,5 +51,5 @@ def hero_list(request):
         hero.save()
         response_dict = {'id': hero.id, 'name': hero.name, 'age': hero.age}
         return JsonResponse(response_dict, status=201)
-    else: 
+    else:
         return HttpResponseNotAllowed(["GET", "POST"])
