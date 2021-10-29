@@ -2,11 +2,17 @@ import * as actionTypes from './actionTypes';
 import { push } from 'connected-react-router';
 import axios from 'axios';
 
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
 const getHeros_ = (heros) => {
+  console.log("getHeros_")
+  console.log(heros)
   return { type: actionTypes.GET_ALL, heros: heros };
 };
 
 export const getHeros = () => {
+  console.log("getHeros")
   return dispatch => {
     return axios.get('/hero/info/')
       .then(res => dispatch(getHeros_(res.data)));
