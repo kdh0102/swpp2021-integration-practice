@@ -15,6 +15,7 @@ function getCookie(name) {
   return cookieValue;
 }
 
+
 const CSRFToken = () => {
   const csrftoken = getCookie('csrftoken');
   return(
