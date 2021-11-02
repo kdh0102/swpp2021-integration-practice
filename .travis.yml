@@ -1,12 +1,12 @@
 # CI Environment
 dist: bionic
+python: "3.7.9"
 
 # Job Configurations
 jobs:
   include:
     - language: node_js
       node_js: 14
-      python: "3.7.9"
       addons:
         sonarcloud:
           organization: kdh0102
